@@ -26,6 +26,12 @@ app.get('*', (req, res) => {
             return route.loadData(store);
         }
         return null;
+    }).map(promise => {
+        if (promise) {
+            return new Promise((resolve, reject) => {
+                promise.then(resolve).catch(resolve);
+            });
+        }
     });
 
     Promise.all(promises).then(() => {
