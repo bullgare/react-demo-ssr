@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchUsers } from '../actions';
+import { head } from "../helpers/head";
 
 class UserListPage extends Component {
     componentDidMount() {
@@ -17,6 +18,7 @@ class UserListPage extends Component {
     render() {
         return (
             <div>
+                {head(`Users. ${this.props.users.length} loaded`)}
                 List of users
                 <ul>{this.renderUsers()}</ul>
             </div>
